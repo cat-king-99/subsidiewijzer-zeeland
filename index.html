@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subsidiewijzer Zeeland – onderzoek naar economie, ondernemerschap & innovatie</title>
+  <meta name="description" content="Overzicht van subsidies op regionaal, provinciaal, landelijk en Europees niveau voor onderzoek naar de economie, het ondernemerschap en innovatie in Zeeland, filterbaar op categorie, bedrag en tijd.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+</head>
+<body>
+  <header class="kop">
+    <div class="kop-inhoud">
+      <p class="kop-kicker">Provincie Zeeland · Subsidieoverzicht</p>
+      <h1>Subsidiewijzer Zeeland</h1>
+      <p class="kop-intro">
+        Alle regelingen op <strong>regionaal</strong>, <strong>provinciaal</strong>, <strong>landelijk</strong> en
+        <strong>Europees</strong> niveau waarmee u onderzoek kunt financieren naar de
+        <strong>economie</strong>, het <strong>ondernemerschap</strong> en de <strong>innovatie</strong> in Zeeland.
+        Filter op categorie, bedrag en tijd; klik op een regeling voor de beschikbare bedragen en alle voorwaarden.
+      </p>
+      <p class="kop-disclaimer">
+        Gegevens zijn indicatief en laatst geverifieerd op <strong id="bijgewerkt"></strong>.
+        Bedragen, percentages en openstellingen wijzigen regelmatig – raadpleeg altijd de officiële bron via de link per regeling.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="besturing" aria-label="Filters">
+      <div class="besturing-rij">
+        <label class="zoek-label" for="zoek">Zoeken</label>
+        <input type="search" id="zoek" placeholder="Bijv. haalbaarheid, R&D, mkb, consortium, energie…" autocomplete="off">
+      </div>
+
+      <div class="filter-groep">
+        <span class="filter-titel">Niveau</span>
+        <div class="chips" id="filter-niveau"></div>
+      </div>
+
+      <div class="filter-groep">
+        <span class="filter-titel">Categorie</span>
+        <div class="chips" id="filter-categorie"></div>
+      </div>
+
+      <div class="filter-groep">
+        <span class="filter-titel">Tijd / openstelling</span>
+        <div class="chips" id="filter-periode"></div>
+      </div>
+
+      <div class="besturing-rij selects">
+        <div>
+          <label class="zoek-label" for="filter-bedrag">Subsidiebedrag</label>
+          <select id="filter-bedrag">
+            <option value="alle">Alle bedragen</option>
+            <option value="t/m50k">Tot €50.000 per project</option>
+            <option value="50k-250k">€50.000 – €250.000</option>
+            <option value="250k-1m">€250.000 – €1 mln</option>
+            <option value="boven1m">Meer dan €1 mln</option>
+          </select>
+        </div>
+        <div>
+          <label class="zoek-label" for="sorteer">Sorteren</label>
+          <select id="sorteer">
+            <option value="relevantie">Standaard</option>
+            <option value="bedrag-desc">Bedrag: hoog → laag</option>
+            <option value="bedrag-asc">Bedrag: laag → hoog</option>
+            <option value="deadline">Eerstvolgende deadline</option>
+            <option value="naam">Naam A–Z</option>
+          </select>
+        </div>
+        <button type="button" id="reset" class="reset-knop">Filters resetten</button>
+      </div>
+
+      <div class="statistieken" id="statistieken"></div>
+    </section>
+
+    <section aria-label="Resultaten">
+      <div class="resultaten-grid" id="resultaten"></div>
+      <p id="leeg-melding" class="leeg-melding" hidden>
+        Geen regelingen gevonden met deze combinatie van filters.
+        <button type="button" onclick="document.getElementById('reset').click()">Toon alles opnieuw</button>
+      </p>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="modal" hidden role="dialog" aria-modal="true">
+    <div class="modal">
+      <button type="button" class="modal-sluit" id="modal-sluit" aria-label="Sluiten">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="voet">
+    <p>
+      Bronnen: rvo.nl · zeeland.nl (Provincie Zeeland) · impulszeeland.nl · interregvlaned.eu · interregnorthsea.eu · nwo.nl · rijksoverheid.nl · lokalereregeling.overheid.nl.
+      Deze wijzer is een hulpmiddel; de officiële regeltekst is altijd leidend.
+    </p>
+    <p>Subsidiewijzer Zeeland · laatst bijgewerkt: <span id="bijgewerkt-voet"></span></p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
